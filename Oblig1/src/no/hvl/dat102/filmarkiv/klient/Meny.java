@@ -16,7 +16,6 @@ public class Meny {
     }
 
     public void start() {
-        // TODO
         Scanner scanner = new Scanner(System.in);
 
         filmarkiv.leggTilFilm(new Film(1, "Christopher Nolan", "Inception", 2010, Sjanger.SCIFI, "Warner Bros"));
@@ -25,9 +24,12 @@ public class Meny {
 
         boolean kjorer = true;
         while (kjorer) {
-            System.out.println("(1) Legg til ny film\n(2) Skriv ut info om spesifikk film med tittel\n(3) Skriv ut info om spesifikk film med produsent\n(4) Skriv ut info om arkivet\n(5) Avslutt");
+            System.out.println("(0) Avslutt\n(1) Legg til ny film\n(2) Skriv ut info om spesifikk film med tittel\n(3) Skriv ut info om spesifikk film med produsent\n(4) Skriv ut info om arkivet\n(5) Slett en film fra arkivet");
             int svar = scanner.nextInt();
             switch (svar) {
+                case 0:
+                    kjorer = false;
+                    break;
                 case 1:
                     filmarkiv.leggTilFilm(tekstgr.lesFilm(filmarkiv));
                     break;
@@ -45,7 +47,12 @@ public class Meny {
                     tekstgr.skrivUtStatistikk(filmarkiv);
                     break;
                 case 5:
-                    kjorer = false;
+                    boolean slettet = tekstgr.slettFilm(filmarkiv);
+                    if (slettet) {
+                        System.out.println("Filmen ble slettet.");
+                    } else {
+                        System.out.println("Filmen ble ikke slettet.");
+                    }
                     break;
                 default:
                     System.out.println("Ugyldig input.");

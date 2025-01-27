@@ -78,7 +78,7 @@ public class Film {
 
     @Override
     public String toString() {
-        return tittel + " (" + lanseringsAar + ", " + sjanger + "), regi av " + filmprodusent + ", filmselskap: " + filmselskap;
+        return "Filmnr: " + filmnr + ", " + tittel + " (" + lanseringsAar + ", " + sjanger + "), regi av " + filmprodusent + ", filmselskap: " + filmselskap;
     }
 
     @Override
