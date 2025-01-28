@@ -46,9 +46,10 @@ public class Filmarkiv2Test {
         assertEquals(3, filmarkiv.antall());
 
         assertFalse(filmarkiv.slettFilm(4));
-        assertTrue(filmarkiv.slettFilm(3));
-        assertEquals(2, filmarkiv.antall());
         assertTrue(filmarkiv.slettFilm(2));
+        assertEquals(2, filmarkiv.antall());
+        assertTrue(filmarkiv.slettFilm(3));
+        assertNull(filmarkiv.finnFilm(3));
         assertEquals(1, filmarkiv.antall());
     }
 

@@ -35,14 +35,19 @@ public class Filmarkiv2 implements FilmarkivADT {
     @Override
     public boolean slettFilm(int filmnr) {
         LinearNode<Film> denne = start;
-        LinearNode<Film> forrige = start;
-        while (denne != null) {
-            if (denne.data.getFilmnr() == filmnr) {
-                forrige.neste = denne.neste;
+
+        if (denne.data.getFilmnr() == filmnr) {
+            start = denne.neste;
+            antall--;
+            return true;
+        }
+
+        while (denne.neste != null) {
+            if (denne.neste.data.getFilmnr() == filmnr) {
+                denne.neste = denne.neste.neste;
                 antall--;
                 return true;
             }
-            forrige = denne;
             denne = denne.neste;
         }
         return false;
